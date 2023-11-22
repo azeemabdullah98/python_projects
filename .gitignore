@@ -1,0 +1,5 @@
+instance/
+.DS_Store
+*.pyc
+
+__pycache__/run.cpython-39.pyc

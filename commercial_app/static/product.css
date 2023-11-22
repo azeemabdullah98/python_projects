@@ -1,0 +1,105 @@
+.product-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    row-gap: 20px;
+    column-gap: 15px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: 120px;
+    /* transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s; */
+}
+
+.product-card {
+    padding: 20px;
+    align-items: center;
+    background-color: white;
+    transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s;
+}
+
+.product-card:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.product-img {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    width: 100%;
+    transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s;
+}
+
+.product-img:active {
+    opacity: 0.6;
+}
+
+.product-add {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+
+.buy-button {
+    background-color: rgb(250, 150, 0);
+    color: black;
+    border: none;
+    padding: 10px;
+    transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    opacity: 0.8;
+}
+
+.buy-button:active {
+    opacity: 0.6;
+}
+
+.cart-button {
+    border: none;
+    transition: background-color 0.15s;
+    cursor: pointer;
+}
+
+.cart-button:hover {
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+}
+
+.cart-button:active {
+    opacity: 0.6;
+}
+
+.update-account-section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 35%;
+    margin-right: 25%;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.post-content-section{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 35%;
+    margin-right: 25%;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.product-name{
+    font-size: 27px;
+}

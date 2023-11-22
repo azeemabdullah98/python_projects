@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.title-bar{
+    display: grid;
+    background-color: rgb(250, 150, 0);
+    grid-template-columns: 0.3fr 1fr 1.6fr 1.4fr;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+}
+
+.topnav a.icon {
+  background: rgb(250, 150, 0);
+  position: fixed;
+  display: block;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.left-section {
+    margin-left: 50px;
+}
+
+.middle-section {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 0;
+    align-items: center;
+}
+
+.middle-section:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.search-bar {
+    flex: 1;
+    height: 50px;
+    padding-left: 10px;
+    justify-content: space-between;
+    border: 0;
+    font-family: Roboto, Arial;
+    font-size: 15px;
+    transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s;
+}
+
+.search-bar-button {
+    background-color: rgb(250, 150, 0);
+    border: 1px solid rgb(250, 150, 0);
+    height: 48px;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 15px;
+    padding-top: 10px;
+    border-radius: 5px;
+    transition: opacity 0.15s, padding-left 0.15s, padding-right 0.15s;
+}
+
+.search-bar-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.search-bar-button:active {
+    opacity: 0.6;
+}
+
+.search-bar-logo {
+    background-color: #f7f7f7;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 40px;
+    width: 55px;
+    border: 1px solid #cccccc;
+    border-left: none;
+}
+
+</style>
+</head>
+<body>
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <div id="myLinks"><br><br><br>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+        </a>
+    </div>
+<div class="title-bar">
+    
+    <div class="left-section">
+        <a class="navbar-brand mr-4" href="/">XYZ Jewellery</a>
+    </div>
+    <div class="middle-section">
+        <input class="search-bar" placeholder="search..." />
+        <button class="search-bar-button" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+
+
+
+<!-- End smartphone / tablet look -->
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+    x.style.flexDirection = "column";
+  }
+}
+</script>
+
+</body>
+</html>

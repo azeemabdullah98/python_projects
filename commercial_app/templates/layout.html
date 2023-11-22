@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='general.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='header.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='product.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='login.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='main.css')}}"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>HomePage</title>
+    {% endif %}
+  </head>
+
+  <body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=True) %} {% if
+          messages %} {% for category, message in messages %}
+          <div class="alert alert-{{category}}" id="alert-message">
+            {{message}}
+          </div>
+          {% endfor %} {% endif %} {% endwith %}
+        </div>
+      </div>
+    </main>
+    <div class="title-bar">
+      {% block content_home %}
+      <!-- <div class="hamburger-section">
+            <img class="hamburger-menu" src="../static/icons/hamburger-menu.svg" />
+            <div class="dropdown-content">
+                <a>Hello World!</a>
+                <a>Hello World!</a>
+                <a>Hello World!</a>
+            </div>
+        </div> -->
+      <div class="left-section">
+        <a class="navbar-brand mr-4" href="/">XYZ Jewellery</a>
+      </div>
+      <div class="middle-section">
+        <input class="search-bar" placeholder="search..." />
+        <button class="search-bar-button" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+
+      <div class="right-section">
+        {% if current_user.is_authenticated %}
+        <a>Welcome </a>
+        <a class="nav-item nav-link" href="{{url_for('account')}}"
+          >{{current_user.username}}</a
+        >
+        <a class="nav-item nav-link" href="{{url_for('logout')}}">Logout</a>
+        <a class="nav-item nav-link" href="{{url_for('new_post')}}">New Post</a>
+        {% else %}
+        <a>Welcome User!</a>
+        <a class="nav-item nav-link" href="{{url_for('userLogin')}}">Login</a>
+        <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
+        {% endif %}
+      </div>
+      {% endblock content_home %}
+    </div>
+
+    {% block content_items %}
+
+    <div class="product-items">
+      {% for post in posts %}
+      <div class="product-card">
+        <div class="product-image">
+          <img
+            class="product-img"
+            src="{{url_for('static',filename='product_image/' + post.product_image)}}"
+          />
+        </div>
+        <div class="product-description">
+          <p class="product-name">{{post.title}}</p>
+        </div>
+        <div class="product-tags">
+          <p class="product-tag-name">{{post.tags}}</p>
+        </div>
+        <div class="border-bottom-sm m-1">
+          <p class="product-price-tag">₹{{post.price}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endblock content_items %}
+  </body>
+</html>
