@@ -66,6 +66,25 @@ def account():
         'static', filename='profile_pic/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form, user=current_user)
 
+@app.route("/delete/picture/", methods=['POST'])
+@login_required
+def delete_picture():
+    form = UpdateAccountForm()
+    if current_user.image_file == "default.jpg":
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        return redirect(url_for('account'))
+    else:
+        current_user.image_file = "default.jpg"
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        db.session.commit()
+        image_file = url_for(
+        'static', filename='profile_pic/' + current_user.image_file)
+        return redirect(url_for('account'))
+    
+    
+    # return render_template('account.html', title='Account', image_file=image_file, form=form, user=current_user)
 
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
